@@ -40,11 +40,11 @@ impl Histgram {
             .iter()
             .enumerate()
             .map(|(idx, count)| {
-                let bar: String = iter::repeat('*').take(count / c_tick).collect();
+                let count: String = iter::repeat('*').take(count / c_tick).collect();
                 let head = format!("{}", idx * tick + min);
                 let len = head.chars().count();
                 let head_pad: String = iter::repeat(' ').take(digit - len).collect();
-                format!("{}{}|{}", head_pad, head, bar)
+                format!("{}{}|{}", head_pad, head, count)
             })
             .collect();
         let header: String = iter::repeat('-').take(digit + column + 10).collect();

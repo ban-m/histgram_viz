@@ -34,7 +34,7 @@ impl Histgram {
         let digit = format!("{}", max).chars().count();
         let digit = digit.max(format!("{}", row).chars().count());
         // Determine column tick.
-        let c_tick = counts.iter().max().unwrap() / column;
+        let c_tick = (counts.iter().max().unwrap() / column).max(1);
         use std::iter;
         let rows: Vec<_> = counts
             .iter()

@@ -17,7 +17,7 @@ impl Histgram {
         // Determine the draw range.
         let min = *self.raw_count.iter().min().unwrap();
         let max = *self.raw_count.iter().max().unwrap();
-        let tick = ((max - min) / row).max(1);
+        let tick = (((max - min) + row / 2) / row).max(1);
         let counts: Vec<_> = (0..row)
             .map(|i| {
                 self.raw_count

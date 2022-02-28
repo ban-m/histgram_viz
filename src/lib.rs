@@ -43,13 +43,12 @@ impl Histgram {
                 let count: String = iter::repeat('*').take(count / c_tick).collect();
                 let head = format!("{}", idx * tick + min);
                 let len = head.chars().count();
-                let head_pad: String = iter::repeat(' ').take(digit - len).collect();
+                let head_pad: String = iter::repeat(' ').take(digit.saturating_sub(len)).collect();
                 format!("{}{}|{}", head_pad, head, count)
             })
             .collect();
         let header: String = iter::repeat('-').take(digit + column + 10).collect();
         let extra = format!("*={}", c_tick);
-        //eprintln!("{}", rows.len());
         format!("{}\n{}\n{}", extra, header, rows.join("\n"))
     }
 }

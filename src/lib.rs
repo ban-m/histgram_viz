@@ -11,6 +11,7 @@ impl Histgram {
     }
     // Print raw data in height x row format.
     pub fn format(&self, column: usize, row: usize) -> String {
+        eprintln!("DUMP\t{:?}", self.raw_count);
         if self.raw_count.is_empty() {
             return String::new();
         }
@@ -47,6 +48,9 @@ impl Histgram {
                 format!("{}{}|{}", head_pad, head, count)
             })
             .collect();
+        if digit + column + 10 > 100000000000 {
+            panic!("{}\t{}\t{}", digit, column, 10);
+        }
         let header: String = iter::repeat('-').take(digit + column + 10).collect();
         let extra = format!("*={}", c_tick);
         format!("{}\n{}\n{}", extra, header, rows.join("\n"))

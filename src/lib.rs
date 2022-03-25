@@ -11,7 +11,6 @@ impl Histgram {
     }
     // Print raw data in height x row format.
     pub fn format(&self, column: usize, row: usize) -> String {
-        eprintln!("DUMP\t{:?}", self.raw_count);
         if self.raw_count.is_empty() {
             return String::new();
         }
